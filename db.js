@@ -33,9 +33,28 @@ class MojeDB {
         this.#db.onerror = function(ev) {
             console.log("db error: ", ev.target.errorCode);
         };               
-    }        
+    }    
+
+    ulozStudenta(jmeno, prijmeni) {
+        const trans = this.#db.transaction(this.#nazevOsStudenti, "readwrite");
+        trans.oncomplete = (e) => {
+            console.log("transakce hotovo");            
+        };
+        trans.onerror = (e) => {
+            console.log("Něco špatně s transakcí: " + ev.target.errorCode);            
+        };
+        const objStore = trans.objectStore(this.#nazevOsStudenti);
+        objStore.add({'jmeno' : jmeno, 'prijmeni' : prijmeni});        
+    }
 }
 
 window.onload = () => {
-    const DB = new MojeDB();    
+    const DB = new MojeDB();
+    document.getElementById('student-pridat').addEventListener('click', (but) => {
+        const jm = document.getElementById('jmeno').value;
+        const pr = document.getElementById('prijmeni').value;
+        if(jm.length > 1 && pr.length > 1) {
+            DB.ulozStudenta(jm,pr);
+        }
+    });   
 }
