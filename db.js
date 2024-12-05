@@ -32,8 +32,52 @@ class MojeDB {
         this.#db = ev.target.result; //this.#dbRequest.result;
         this.#db.onerror = function(ev) {
             console.log("db error: ", ev.target.errorCode);
-        };               
-    }    
+        };
+        this.vypisStudenty();               
+    }
+
+    vypisStudenty() {
+        const trans = this.#db.transaction(this.#nazevOsStudenti, "readonly");
+        trans.oncomplete = function(e) {
+            console.log("Vse provedeno!");
+        };
+        trans.onerror = function(e) {
+            console.log("Něco špatně s transakcí: " + ev.target.errorCode);
+            return false;
+        };
+
+        const objStore = trans.objectStore(this.#nazevOsStudenti);
+
+        const stWrapper = document.getElementById('vypis-studenti');
+        stWrapper.innerHTML = "";
+
+        objStore.openCursor().onsuccess = function(event) {
+            let cursor = event.target.result;
+            if (cursor) {
+                console.log(`ID: ${cursor.key}, prijmeni: ${cursor.value.prijmeni}, jmeno: ${cursor.value.jmeno}`);
+                let tr = document.createElement('tr');
+                
+                let td = document.createElement('td');
+                td.innerHTML = cursor.value.id;
+                tr.appendChild(td);
+                
+                td = document.createElement('td');
+                td.innerHTML = cursor.value.prijmeni;
+                tr.appendChild(td);
+
+                td = document.createElement('td');
+                td.innerHTML = cursor.value.jmeno;
+                tr.appendChild(td);
+
+                stWrapper.appendChild(tr);
+
+                cursor.continue();
+            }
+            else {
+                console.log("Vše vypsáno.");
+            }
+        };
+    }
 
     ulozStudenta(jmeno, prijmeni) {
         const trans = this.#db.transaction(this.#nazevOsStudenti, "readwrite");
