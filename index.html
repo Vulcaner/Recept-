@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">    
+    <script src="db.js" type="application/javascript"></script>
+    
+</head>
+<body>
+<div>
+    <label for="jmeno">jmeno: </label>
+    <input type="text" id="jmeno">
+    <label for="prijmeni">prijmeni:</label>
+    <input type="text" id="prijmeni">
+    <button id="student-pridat">Přidat</button>
+</div>
+
+<div>
+    <label for="predmet">Předmět: </label>
+    <input type="text" id="predmet">
+    <button id="predmet-pridat">Přidat</button>
+</div>
+<hr>
+<table>
+    <thead>
+	<tr>
+        <th>ID</th>
+        <th>Jméno</th>
+        <th>Příjmení</th>
+    </tr>
+	<thead>
+    <tbody id="vypis-studenti">		
+    </tbody>
+</table>
+</body>
+</html>
