@@ -1,6 +1,6 @@
 class MojeDB {
     #db;
-    #verze = 1;
+    #verze = 2;
     #dbNazev = 'wwwap2024ks';
     #nazevOsStudenti = "studenti";
     #dbRequest;
@@ -21,10 +21,20 @@ class MojeDB {
     upgradeDB(ev) {
         console.log("db upgrading");
         this.#db = ev.target.result; //this.#dbRequest.result;
-        /// vytvoreni "tabulky" studenti
-        const studentiStore = this.#db.createObjectStore(this.#nazevOsStudenti, { keyPath: "id", autoIncrement: true });
-        // index pro moznost vypisu dle razeni dle prijmeni
-        studentiStore.createIndex('prijmeniIndex', 'prijmeni');
+
+        switch(ev.oldVersion){
+            case 0 :
+
+                /// vytvoreni "tabulky" studenti
+                const studentiStore = this.#db.createObjectStore(this.#nazevOsStudenti, { keyPath: "id", autoIncrement: true });
+                // index pro moznost vypisu dle razeni dle prijmeni
+                studentiStore.createIndex('prijmeniIndex', 'prijmeni');
+
+            case 1 : 
+
+                const predmetStore = this.#db.createObjectStore("predmety", { keyPath: "id", autoIncrement: true });
+                predmetStore.createIndex('nazevIndex', 'nazev');
+        }
     }
 
     onsuccess(ev) {
@@ -62,11 +72,11 @@ class MojeDB {
                 tr.appendChild(td);
                 
                 td = document.createElement('td');
-                td.innerHTML = cursor.value.prijmeni;
+                td.innerHTML = cursor.value.jmeno;
                 tr.appendChild(td);
 
                 td = document.createElement('td');
-                td.innerHTML = cursor.value.jmeno;
+                td.innerHTML = cursor.value.prijmeni;
                 tr.appendChild(td);
 
                 stWrapper.appendChild(tr);
@@ -79,18 +89,31 @@ class MojeDB {
         };
     }
 
+    ulozPredmet(nazev) {
+        const trans = this.#db.transaction("predmety", "readwrite");
+        trans.oncomplete = (e) => {
+            console.log("transakce UlozPredmet hotovo");            
+        };
+        trans.onerror = (e) => {
+            console.log("Něco špatně s transakcí UlozPredmet: " + e.target.errorCode);            
+        };
+        const tabPredmety = trans.objectStore("predmety");
+        tabPredmety.add({'nazev' : nazev, 'studenti': []});
+    }
+    
     ulozStudenta(jmeno, prijmeni) {
         const trans = this.#db.transaction(this.#nazevOsStudenti, "readwrite");
         trans.oncomplete = (e) => {
-            console.log("transakce hotovo");            
+            console.log("transakce hotovo"); 
+            this.vypisStudenty();           
         };
         trans.onerror = (e) => {
-            console.log("Něco špatně s transakcí: " + ev.target.errorCode);            
+            console.log("Něco špatně s transakcí: " + e.target.errorCode);            
         };
         const objStore = trans.objectStore(this.#nazevOsStudenti);
         objStore.add({'jmeno' : jmeno, 'prijmeni' : prijmeni});        
     }
-}
+} // <-- Missing closing brace added here
 
 window.onload = () => {
     const DB = new MojeDB();
@@ -100,5 +123,11 @@ window.onload = () => {
         if(jm.length > 1 && pr.length > 1) {
             DB.ulozStudenta(jm,pr);
         }
-    });   
+    });
+    document.getElementById('predmet-pridat').addEventListener('click', (but) => {
+        const pr = document.getElementById('predmet').value;
+        if(pr.length > 1) {
+            DB.ulozPredmet(pr);
+        }   
+    });
 }

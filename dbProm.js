@@ -115,5 +115,6 @@ window.onload = () => {
         if(jm.length > 1 && pr.length > 1) {
             DB.ulozStudenta(jm,pr);
         }
-    });   
+    }); 
+      
 }
