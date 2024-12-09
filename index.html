@@ -5,13 +5,12 @@
     <title>Title</title>
     <link rel="stylesheet" href="style.css">    
     <script src="db.js" type="application/javascript"></script>
-    
 </head>
 <body>
 <div>
-    <label for="jmeno">jmeno: </label>
+    <label for="jmeno">Jméno: </label>
     <input type="text" id="jmeno">
-    <label for="prijmeni">prijmeni:</label>
+    <label for="prijmeni">Příjmení:</label>
     <input type="text" id="prijmeni">
     <button id="student-pridat">Přidat</button>
 </div>
@@ -23,13 +22,11 @@
 </div>
 
 <div>
-    
     <label for="student">Student: </label>
     <select id="student"></select>
 
-    <label for="student">Předmět: </label>
-    <select id="student"></select>
-
+    <label for="predmet">Předmět: </label>
+    <select id="predmet"></select>
 
     <button id="priradit">Přidat</button>
 </div>
@@ -37,12 +34,12 @@
 <hr>
 <table>
     <thead>
-	<tr>
+    <tr>
         <th>ID</th>
         <th>Jméno</th>
         <th>Příjmení</th>
     </tr>
-	<thead>
+    </thead>
     <tbody id="vypis-studenti">		
     </tbody>
 </table>
