@@ -1,47 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="style.css">    
-    <script src="db.js" type="application/javascript"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptář</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div>
-    <label for="jmeno">Jméno: </label>
-    <input type="text" id="jmeno">
-    <label for="prijmeni">Příjmení:</label>
-    <input type="text" id="prijmeni">
-    <button id="student-pridat">Přidat</button>
-</div>
+    <h1>Receptář</h1>
 
-<div>
-    <label for="predmet">Předmět: </label>
-    <input type="text" id="predmet">
-    <button id="predmet-pridat">Přidat</button>
-</div>
+    <form action="/submit_form" method="post">
+        <div style="border: 1px solid black;">
+        <h2>Vložení nového receptu:</h2>
+            <div>
+        <input type="text" name="nazev_receptu" placeholder="Název receptu">
+        <input type="number" name="doba_pripravy" placeholder="Čas přípravy" min="1">
+        <input id="upload_foto" type="file" name="foto" accept=".jpg, .png">
+        <label for="upload_foto">Nahrát fotografii</label>
+        <p>Maximální velikost fotografie je 2MB a podporované formáty jsou JPG nebo PNG.</p>
+            </div>
+        </div>
 
-<div>
-    <label for="student">Student: </label>
-    <select id="student"></select>
+        <div style="border: 1px solid black;">
+            <h2>Přidání ingrediencí</h2>
+            <div>
+                <input type="text" name="skupina_ingredienci" placeholder="Skupina ingrediencí (např. hlavní chod, omáčka, příloha atd.)">
+                <ul>
+                    <li data-set="0" > <!-- Zde budou možnosti přidání dalších ingrediencí pomocí + tlačítka -->
+                        <input type="text" name="nazev_ingredience" placeholder="Název">
+                        <input type="number" name="mnozstvi" placeholder="Množství" min="1">
+                        <select name="mnozstvi_id">Jednotky
+                            <option>ks</option>
+                            <option>g</option>
+                            <option>kg</option>
+                            <option>ml</option>
+                            <option>l</option>
+                            <option>balení</option>
+                            <option>balíček</option>
+                            <option>hrnek</option>
+                            <option>špetka</option>
+                            <option>stroužek</option>
+                        </select>
+                        <div title="Smazat">Křížek na smazání</div>
+                    </li>
+                </ul>
+                <div>Přidat ingredienci</div>
+                <div>Přidat skupinu ingrediencí</div>
+            </div>
+        </div>
 
-    <label for="predmet">Předmět: </label>
-    <select id="predmet"></select>
+        <div style="border: 1px solid black;">
+            <h2>Postup přípravy receptu</h2>
+            <div>
+                <ul>
+                    <li>
+                        <textarea type ="text" name="postup" placeholder="Popis přípravy"></textarea>
+                    </li>
+                    <div>Smazat krok postupu</div>
+                </ul>
+                <div>Přidat krok postupu</div>
+            </div>
+        </div>
 
-    <button id="priradit">Přidat</button>
-</div>
+        <div>
+            <input type="submit" value="Uložit recept">
+        </div>
 
-<hr>
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Jméno</th>
-        <th>Příjmení</th>
-    </tr>
-    </thead>
-    <tbody id="vypis-studenti">		
-    </tbody>
-</table>
+    </form>
+    
+
+    <script src="model.js"></script>
+    <script src="view.js"></script>
+    <script src="controller.js"></script>
 </body>
 </html>
