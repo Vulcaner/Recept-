@@ -1,10 +1,16 @@
 body {
   font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #132a13;
+  color: #ecf39e;
+}
+
+h1 {
+  margin: 0 auto;
+  text-align: center;
 }
 
 h2 {
   margin-left: 1%;
-  text-transform: capitalize;
 }
 
 div {
@@ -15,33 +21,49 @@ div[style="border: 1px solid black;"] {
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 10px;
-  background-color: #f7f7f7;
+  background-color: #31572c;
   max-width: 80%;
   margin: 20px auto;
 }
 
-#zalozeni_receptu,
-#formular > div div {
+#zalozeni_receptu {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  justify-content: space-between;
 }
 
-#zalozeni_receptu input[type="text"],
-#zalozeni_receptu input[type="number"],
-#zalozeni_receptu button,
-#zalozeni_receptu #max_vel,
-input[type="text"],
-input[type="number"],
-select,
-textarea {
-  flex: 1 1 45%;
-  min-width: 200px;
+#zalozeni_receptu input[type="text"] {
+  flex: 2 1 60%;
+  min-width: 250px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+}
+
+#zalozeni_receptu input[type="number"] {
+  flex: 1 1 10%;
+  min-width: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+label {
+  font-size: 15px;
+  color: #ecf39e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#doba_pripravy {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 15px;
   margin: 5px 0;
 }
 
@@ -59,28 +81,27 @@ textarea {
 }
 
 .upload-button {
-  flex: 1 1 auto;
+  flex: 0 0 100%;
   padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
+  background-color: #90a955;
+  color: #132a13;
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
   border: none;
+  margin-top: 5px;
 }
 
 .upload-button:hover {
-  background-color: #0056b3;
-}
-
-#upload_foto {
-  display: none;
+  background-color: #003e81;
 }
 
 #max_vel {
+  flex: 0 0 100%;
   font-style: italic;
-  color: rgb(69, 69, 69);
+  color: #ecf39e;
+  text-align: center;
   margin-top: 5px;
 }
 
@@ -92,18 +113,88 @@ ul {
 }
 
 li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  gap: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+li input[type="text"] {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+li input[type="number"] {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+li select {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+.krizek {
+  grid-column: 2 / 3;
+  grid-row: 1 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.krizek img {
+  width: 20px;
+  height: 20px;
+}
+
+
+div.skupina-ingredienci {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
-  width: 100%;
+  margin-bottom: 10px;
 }
 
-li input[type="text"],
-li input[type="number"],
-li select {
-  flex: 1 1 30%;
+div.skupina-ingredienci input[type="text"],
+div.skupina-ingredienci input[type="number"],
+div.skupina-ingredienci select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 100px;
 }
+
+div.skupina-ingredienci input[name="skupina_ingredienci"] {
+  flex: 2;
+  min-width: 150px;
+}
+
+div.skupina-ingredienci .krizek {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-color: #ffe6e6;
+  border-radius: 5px;
+}
+
+div.skupina-ingredienci .krizek:hover {
+  background-color: #ffcccc;
+}
+
+div.skupina-ingredienci .krizek img {
+  width: 20px;
+  height: 20px;
+}
+
 
 li div[title="Smazat"] {
   flex: 0 1 auto;
@@ -119,6 +210,19 @@ li div[title="Smazat"] {
 li div[title="Smazat"]:hover {
   background-color: #ffcccc;
 }
+
+#pridej-ingredienci,
+#pridej-skupinu-ingredienci {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #90a955;
+  color: #132a13;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
 
 @media (max-width: 768px) {
   #zalozeni_receptu,

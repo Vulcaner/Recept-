@@ -15,39 +15,69 @@
             <h2>Vložení nového receptu:</h2>
             <div id="zalozeni_receptu">
                 <input type="text" name="nazev_receptu" placeholder="Název receptu">
-                <input type="number" name="doba_pripravy" placeholder="Čas přípravy" min="1">
+                <label for="doba_pripravy">Čas přípravy:</label>
+    <select id="doba_pripravy" name="doba_pripravy">
+        <option value="1">1 minuta</option>
+        <option value="2">2 minuty</option>
+        <option value="5">5 minut</option>
+        <option value="10">10 minut</option>
+        <option value="15">15 minut</option>
+        <option value="20">20 minut</option>
+        <option value="25">25 minut</option>
+        <option value="30">30 minut</option>
+        <option value="35">35 minut</option>
+        <option value="40">40 minut</option>
+        <option value="45">45 minut</option>
+        <option value="50">50 minut</option>
+        <option value="55">55 minut</option>
+        <option value="60">1 hodina</option>
+        <option value="75">1 hodina 15 minut</option>
+        <option value="90">1 hodina 30 minut</option>
+        <option value="105">1 hodina 45 minut</option>
+        <option value="120">2 hodiny</option>
+        <option value="135">2 hodiny 15 minut</option>
+        <option value="150">2 hodiny 30 minut</option>
+        <option value="165">2 hodiny 45 minut</option>
+        <option value="180">3 hodiny</option>
+        <option value="195">3 hodiny 15 minut</option>
+        <option value="210">3 hodiny 30 minut</option>
+        <option value="225">3 hodiny 45 minut</option>
+        <option value="240">4 hodiny</option>
+    </select>
                 <button class="upload-button" onclick="document.getElementById('upload_foto').click()">Nahrát fotografii</button>
-                <input id="upload_foto" type="file" name="foto" accept=".jpg, .png">
+                <input id="upload_foto" type="file" name="foto" accept=".jpg, .png" style="display: none;">
                 <p id="max_vel">Maximální velikost fotografie je 2MB a podporované formáty jsou JPG nebo PNG.</p>
-            </div>
+              </div>
         </div>
 
         <div style="border: 1px solid black;">
             <h2>Přidání ingrediencí</h2>
-            <div>
-                <input type="text" name="skupina_ingredienci" placeholder="Skupina ingrediencí (např. hlavní chod, omáčka, příloha atd.)">
-                <ul>
-                    <li data-set="0" > <!-- Zde budou možnosti přidání dalších ingrediencí pomocí + tlačítka, pravděpodobně to bude fungovat :) -->
-                        <input type="text" name="nazev_ingredience" placeholder="Název">
-                        <input type="number" name="mnozstvi" placeholder="Množství" min="1">
-                        <select name="mnozstvi_id">Jednotky
-                            <option>ks</option>
-                            <option>g</option>
-                            <option>kg</option>
-                            <option>ml</option>
-                            <option>l</option>
-                            <option>balení</option>
-                            <option>balíček</option>
-                            <option>hrnek</option>
-                            <option>špetka</option>
-                            <option>stroužek</option>
-                        </select>
-                        <div title="Smazat">Křížek na smazání</div>
-                    </li>
-                </ul>
-                <div>Přidat ingredienci</div>
-                <div>Přidat skupinu ingrediencí</div>
+            <div class="skupina-ingredienci">
+                <input type="text" name="skupina_ingredienci" placeholder="Skupina ingrediencí (hlavní jídlo, příloha, omáčka, ...)">
+                <input type="text" name="nazev_ingredience" placeholder="Název">
+                <input type="number" name="mnozstvi" placeholder="Množství" min="1">
+                <select name="mnozstvi_id">
+                    <option>ks</option>
+                    <option>g</option>
+                    <option>kg</option>
+                    <option>ml</option>
+                    <option>l</option>
+                    <option>balení</option>
+                    <option>balíček</option>
+                    <option>hrnek</option>
+                    <option>špetka</option>
+                    <option>stroužek</option>
+                </select>
+                <div class="krizek">
+                    <img src="obrazky/kriz.png" alt="Smazat">
+                </div>
             </div>
+            
+            <div class="div-pridani">
+                <div id="pridej-ingredienci">Přidej ingredienci</div>
+                <div id="pridej-skupinu-ingredienci">Přidej skupinu ingrediencí</div>
+              </div>
+              
         </div>
 
         <div style="border: 1px solid black;">
@@ -57,9 +87,10 @@
                     <li>
                         <textarea id="postup_area" type ="text" name="postup" placeholder="Popis přípravy" required="required" rows="10" cols="100"></textarea>
                     </li>
-                    <div>Smazat krok postupu</div>
                 </ul>
-                <div>Přidat krok postupu</div>
+                <div class="div-pridani">
+                    <div id="pridej-ingredienci">Přidat další krok postupu</div>
+                  </div>
             </div>
         </div>
 
