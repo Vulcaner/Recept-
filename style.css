@@ -1,0 +1,140 @@
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h2 {
+  margin-left: 1%;
+  text-transform: capitalize;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+div[style="border: 1px solid black;"] {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  max-width: 80%;
+  margin: 20px auto;
+}
+
+#zalozeni_receptu,
+#formular > div div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+#zalozeni_receptu input[type="text"],
+#zalozeni_receptu input[type="number"],
+#zalozeni_receptu button,
+#zalozeni_receptu #max_vel,
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  flex: 1 1 45%;
+  min-width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin: 5px 0;
+}
+
+textarea {
+  flex: 1 1 45%;
+  min-width: 200px;
+  max-width: 100%;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  resize: none;
+  margin: 5px 0;
+}
+
+.upload-button {
+  flex: 1 1 auto;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+}
+
+.upload-button:hover {
+  background-color: #0056b3;
+}
+
+#upload_foto {
+  display: none;
+}
+
+#max_vel {
+  font-style: italic;
+  color: rgb(69, 69, 69);
+  margin-top: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+li input[type="text"],
+li input[type="number"],
+li select {
+  flex: 1 1 30%;
+}
+
+li div[title="Smazat"] {
+  flex: 0 1 auto;
+  color: #ff0000;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px 10px;
+  background-color: #ffe6e6;
+  border-radius: 5px;
+  text-align: center;
+}
+
+li div[title="Smazat"]:hover {
+  background-color: #ffcccc;
+}
+
+@media (max-width: 768px) {
+  #zalozeni_receptu,
+  #formular > div div,
+  li {
+    flex-direction: column;
+  }
+
+  #zalozeni_receptu input[type="text"],
+  #zalozeni_receptu input[type="number"],
+  #zalozeni_receptu button,
+  #zalozeni_receptu #max_vel,
+  input[type="text"],
+  input[type="number"],
+  select,
+  textarea {
+    flex: 1 1 100%;
+  }
+}

@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receptář</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Receptář</h1>
 
-    <form action="/submit_form" method="post">
+    <form id="formular" action="/submit_form" method="post">
+        
         <div style="border: 1px solid black;">
-        <h2>Vložení nového receptu:</h2>
-            <div>
-        <input type="text" name="nazev_receptu" placeholder="Název receptu">
-        <input type="number" name="doba_pripravy" placeholder="Čas přípravy" min="1">
-        <input id="upload_foto" type="file" name="foto" accept=".jpg, .png">
-        <label for="upload_foto">Nahrát fotografii</label>
-        <p>Maximální velikost fotografie je 2MB a podporované formáty jsou JPG nebo PNG.</p>
+            <h2>Vložení nového receptu:</h2>
+            <div id="zalozeni_receptu">
+                <input type="text" name="nazev_receptu" placeholder="Název receptu">
+                <input type="number" name="doba_pripravy" placeholder="Čas přípravy" min="1">
+                <button class="upload-button" onclick="document.getElementById('upload_foto').click()">Nahrát fotografii</button>
+                <input id="upload_foto" type="file" name="foto" accept=".jpg, .png">
+                <p id="max_vel">Maximální velikost fotografie je 2MB a podporované formáty jsou JPG nebo PNG.</p>
             </div>
         </div>
 
@@ -26,7 +27,7 @@
             <div>
                 <input type="text" name="skupina_ingredienci" placeholder="Skupina ingrediencí (např. hlavní chod, omáčka, příloha atd.)">
                 <ul>
-                    <li data-set="0" > <!-- Zde budou možnosti přidání dalších ingrediencí pomocí + tlačítka -->
+                    <li data-set="0" > <!-- Zde budou možnosti přidání dalších ingrediencí pomocí + tlačítka, pravděpodobně to bude fungovat :) -->
                         <input type="text" name="nazev_ingredience" placeholder="Název">
                         <input type="number" name="mnozstvi" placeholder="Množství" min="1">
                         <select name="mnozstvi_id">Jednotky
@@ -54,7 +55,7 @@
             <div>
                 <ul>
                     <li>
-                        <textarea type ="text" name="postup" placeholder="Popis přípravy"></textarea>
+                        <textarea id="postup_area" type ="text" name="postup" placeholder="Popis přípravy" required="required" rows="10" cols="100"></textarea>
                     </li>
                     <div>Smazat krok postupu</div>
                 </ul>
