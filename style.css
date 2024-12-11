@@ -28,43 +28,31 @@ div[style="border: 1px solid black;"] {
 
 #zalozeni_receptu {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; 
   gap: 15px;
+  width: 100%; 
 }
 
-#zalozeni_receptu input[type="text"] {
-  flex: 2 1 60%;
-  min-width: 250px;
-  padding: 10px;
-  border: 1px solid #ccc;
+#zalozeni_receptu input[type="text"],
+#zalozeni_receptu input[type="number"],
+#zalozeni_receptu select,
+#zalozeni_receptu label {
+  padding: 8px 10px;
+  border: 1px solid #ecf39e;
   border-radius: 5px;
   box-sizing: border-box;
+  font-size: 15px;
+  color: #132a13;
+  flex: 1 1 auto;
+  min-width: 100px;
 }
 
-#zalozeni_receptu input[type="number"] {
-  flex: 1 1 10%;
-  min-width: 150px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-label {
+#zalozeni_receptu label {
   font-size: 15px;
   color: #ecf39e;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-#doba_pripravy {
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 15px;
-  margin: 5px 0;
 }
 
 textarea {
@@ -94,7 +82,8 @@ textarea {
 }
 
 .upload-button:hover {
-  background-color: #003e81;
+  background-color: #132A13;
+  color: #ecf39e;
 }
 
 #max_vel {
@@ -151,31 +140,47 @@ li select {
   height: 20px;
 }
 
-
-div.skupina-ingredienci {
+.skupina-ingredienci {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-div.skupina-ingredienci input[type="text"],
-div.skupina-ingredienci input[type="number"],
-div.skupina-ingredienci select {
+.skupina-ingredienci input[name="skupina_ingredienci"] {
+  flex: 0 0 100%;
+  min-width: 250px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
-  flex: 1;
-  min-width: 100px;
 }
 
-div.skupina-ingredienci input[name="skupina_ingredienci"] {
-  flex: 2;
+.skupina-ingredienci input[name="nazev_ingredience"] {
+  flex: 2 1 60%;
+  min-width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.skupina-ingredienci input[name="mnozstvi"] {
+  flex: 1 1 10%;
   min-width: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-div.skupina-ingredienci .krizek {
+.skupina-ingredienci select[name="mnozstvi_id"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.skupina-ingredienci .krizek {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,11 +191,11 @@ div.skupina-ingredienci .krizek {
   border-radius: 5px;
 }
 
-div.skupina-ingredienci .krizek:hover {
+.skupina-ingredienci .krizek:hover {
   background-color: #ffcccc;
 }
 
-div.skupina-ingredienci .krizek img {
+.skupina-ingredienci .krizek img {
   width: 20px;
   height: 20px;
 }
@@ -211,16 +216,47 @@ li div[title="Smazat"]:hover {
   background-color: #ffcccc;
 }
 
+.div-pridani {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
 #pridej-ingredienci,
 #pridej-skupinu-ingredienci {
   padding: 10px 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #ecf39e;
   border-radius: 5px;
   background-color: #90a955;
   color: #132a13;
   font-size: 15px;
   cursor: pointer;
-  margin: 0 auto;
+}
+
+#pridej-ingredienci:hover,
+#pridej-skupinu-ingredienci:hover {
+  background-color: #132A13;
+  color: #ecf39e;
+}
+
+
+#uloz_recept {
+  display: block;
+  margin: 20px auto;
+  padding: 15px 30px;
+  background-color: #90a955;
+  color: #132a13;
+  font-size: 18px;
+  border: 1px solid #ecf39e;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+}
+
+#uloz_recept:hover {
+  background-color: #132a13;
+  color: #ecf39e;
 }
 
 
