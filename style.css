@@ -17,6 +17,27 @@ div {
   box-sizing: border-box;
 }
 
+#zalozeni_receptu_wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.image-preview-placeholder {
+  border: 2px dashed #ecf39e;
+  background-color: #31572c;
+  color: #ecf39e;
+  width: 200px;
+  min-height: 100%; 
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 div[style="border: 1px solid black;"] {
   border: 1px solid #ccc;
   padding: 20px;
@@ -30,7 +51,7 @@ div[style="border: 1px solid black;"] {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  width: 100%; 
+  width: 100%;
   align-items: flex-start;
 }
 
@@ -328,5 +349,15 @@ li div[title="Smazat"]:hover {
 
   .nazev_receptu_input {
     width: 100%;
+  }
+
+  #zalozeni_receptu_wrapper {
+    flex-direction: column;
+  }
+
+  .image-preview-placeholder {
+    width: 50%;
+    height: 200px;
+    margin: 0 auto;
   }
 }
