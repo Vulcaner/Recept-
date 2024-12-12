@@ -14,65 +14,73 @@
         <div style="border: 1px solid black;">
             <h2>Vložení nového receptu:</h2>
             <div id="zalozeni_receptu">
-                <input type="text" name="nazev_receptu" placeholder="Název receptu">
+                <input class="nazev_receptu_input" type="text" name="nazev_receptu" placeholder="Název receptu">
+
+                <div class="pair">
+                    <label for="doba_pripravy">Čas přípravy:</label>
+                    <select id="doba_pripravy" name="doba_pripravy">
+                        <option value="1">1 minuta</option>
+                        <option value="2">2 minuty</option>
+                        <option value="5">5 minut</option>
+                        <option value="10">10 minut</option>
+                        <option value="15">15 minut</option>
+                        <option value="20">20 minut</option>
+                        <option value="25">25 minut</option>
+                        <option value="30">30 minut</option>
+                        <option value="35">35 minut</option>
+                        <option value="40">40 minut</option>
+                        <option value="45">45 minut</option>
+                        <option value="50">50 minut</option>
+                        <option value="55">55 minut</option>
+                        <option value="60">1 hodina</option>
+                        <option value="75">1 hodina 15 minut</option>
+                        <option value="90">1 hodina 30 minut</option>
+                        <option value="105">1 hodina 45 minut</option>
+                        <option value="120">2 hodiny</option>
+                        <option value="135">2 hodiny 15 minut</option>
+                        <option value="150">2 hodiny 30 minut</option>
+                        <option value="165">2 hodiny 45 minut</option>
+                        <option value="180">3 hodiny</option>
+                        <option value="195">3 hodiny 15 minut</option>
+                        <option value="210">3 hodiny 30 minut</option>
+                        <option value="225">3 hodiny 45 minut</option>
+                        <option value="240">4 hodiny</option>
+                    </select>
+                </div>
+
+                <div class="pair">
+                    <label for="denni_dobro">Denní zařazení:</label>
+                    <select id="denni_dobro" name="denni_dobro">
+                        <option value="snidane">Snídaně</option>
+                        <option value="svacina">Svačina</option>
+                        <option value="obed">Oběd</option>
+                        <option value="vecere">Večeře</option>
+                    </select>
+                </div>
+
+                <div class="pair">
+                    <label for="druh_kuchyne">Druh kuchyně:</label>
+                    <select id="druh_kuchyne" name="druh_kuchyne">
+                        <option value="ceska">Česká</option>
+                        <option value="indicka">Indická</option>
+                        <option value="asijska">Asijská</option>
+                        <option value="francouzska">Francouzská</option>
+                    </select>
+                </div>
+
+                <div class="pair">
+                    <label for="typ_jidla">Typ jídla:</label>
+                    <select id="typ_jidla" name="typ_jidla">
+                        <option value="polevka">Polévka</option>
+                        <option value="maso">Maso</option>
+                        <option value="omacka">Omáčka</option>
+                        <option value="testoviny">Těstoviny</option>
+                        <option value="moucnik">Moučníky</option>
+                        <option value="dezert">Dezerty</option>
+                    </select>
+                </div>
         
-                <label for="doba_pripravy">Čas přípravy:</label>
-                <select id="doba_pripravy" name="doba_pripravy">
-                    <option value="1">1 minuta</option>
-                    <option value="2">2 minuty</option>
-                    <option value="5">5 minut</option>
-                    <option value="10">10 minut</option>
-                    <option value="15">15 minut</option>
-                    <option value="20">20 minut</option>
-                    <option value="25">25 minut</option>
-                    <option value="30">30 minut</option>
-                    <option value="35">35 minut</option>
-                    <option value="40">40 minut</option>
-                    <option value="45">45 minut</option>
-                    <option value="50">50 minut</option>
-                    <option value="55">55 minut</option>
-                    <option value="60">1 hodina</option>
-                    <option value="75">1 hodina 15 minut</option>
-                    <option value="90">1 hodina 30 minut</option>
-                    <option value="105">1 hodina 45 minut</option>
-                    <option value="120">2 hodiny</option>
-                    <option value="135">2 hodiny 15 minut</option>
-                    <option value="150">2 hodiny 30 minut</option>
-                    <option value="165">2 hodiny 45 minut</option>
-                    <option value="180">3 hodiny</option>
-                    <option value="195">3 hodiny 15 minut</option>
-                    <option value="210">3 hodiny 30 minut</option>
-                    <option value="225">3 hodiny 45 minut</option>
-                    <option value="240">4 hodiny</option>
-                </select>
-        
-                <label for="denni_dobro">Denní zařazení:</label>
-                <select id="denni_dobro" name="denni_dobro">
-                    <option value="snidane">Snídaně</option>
-                    <option value="svacina">Svačina</option>
-                    <option value="obed">Oběd</option>
-                    <option value="vecere">Večeře</option>
-                </select>
-        
-                <label for="druh_kuchyne">Druh kuchyně:</label>
-                <select id="druh_kuchyne" name="druh_kuchyne">
-                    <option value="ceska">Česká</option>
-                    <option value="indicka">Indická</option>
-                    <option value="asijska">Asijská</option>
-                    <option value="francouzska">Francouzská</option>
-                </select>
-        
-                <label for="typ_jidla">Typ jídla:</label>
-                <select id="typ_jidla" name="typ_jidla">
-                    <option value="polevka">Polévka</option>
-                    <option value="maso">Maso</option>
-                    <option value="omacka">Omáčka</option>
-                    <option value="testoviny">Těstoviny</option>
-                    <option value="moucnik">Moučníky</option>
-                    <option value="dezert">Dezerty</option>
-                </select>
-        
-                <button class="upload-button" onclick="document.getElementById('upload_foto').click()">Nahrát fotografii</button>
+                <button class="upload-button" type="button" onclick="document.getElementById('upload_foto').click()">Nahrát fotografii</button>
                 <input id="upload_foto" type="file" name="foto" accept=".jpg, .png, .jpeg" style="display: none;">
                 <p id="max_vel">Maximální velikost fotografie je 2MB a podporované formáty jsou JPG, JPEG nebo PNG.</p>
             </div>
@@ -104,7 +112,7 @@
             <div class="div-pridani">
                 <div id="pridej-ingredienci">Přidej ingredienci</div>
                 <div id="pridej-skupinu-ingredienci">Přidej skupinu ingrediencí</div>
-              </div>
+            </div>
               
         </div>
 
@@ -118,11 +126,12 @@
                 </ul>
                 <div class="div-pridani">
                     <div id="pridej-ingredienci">Přidat další krok postupu</div>
-                  </div>
+                </div>
             </div>
         </div>
 
-        <div>
+        <div class="button-container">
+            <input id="zobraz_ulozene" type="button" value="Zobrazit uložené recepty">
             <input id="uloz_recept" type="submit" value="Uložit recept">
         </div>
 

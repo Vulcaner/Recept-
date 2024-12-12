@@ -28,31 +28,58 @@ div[style="border: 1px solid black;"] {
 
 #zalozeni_receptu {
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   gap: 15px;
   width: 100%; 
+  align-items: flex-start;
 }
 
-#zalozeni_receptu input[type="text"],
-#zalozeni_receptu input[type="number"],
-#zalozeni_receptu select,
-#zalozeni_receptu label {
+
+.nazev_receptu_input {
+  flex: 0 0 100%;
+  padding: 10px;
+  border: 1px solid #ecf39e;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #132a13;
+  min-width: 250px;
+  box-sizing: border-box;
+}
+
+
+.pair {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+  box-sizing: border-box;
+  flex: 1 1 20%;
+  min-width: 150px;
+}
+
+
+#zalozeni_receptu label,
+#zalozeni_receptu select {
   padding: 8px 10px;
   border: 1px solid #ecf39e;
   border-radius: 5px;
-  box-sizing: border-box;
   font-size: 15px;
-  color: #132a13;
-  flex: 1 1 auto;
-  min-width: 100px;
+  box-sizing: border-box;
 }
 
-#zalozeni_receptu label {
-  font-size: 15px;
+.pair label {
   color: #ecf39e;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
+}
+
+.pair select {
+  color: #132a13;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 textarea {
@@ -74,10 +101,10 @@ textarea {
   background-color: #90a955;
   color: #132a13;
   text-align: center;
+  border: 1px solid #ecf39e;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  border: none;
   margin-top: 5px;
 }
 
@@ -200,7 +227,6 @@ li select {
   height: 20px;
 }
 
-
 li div[title="Smazat"] {
   flex: 0 1 auto;
   color: #ff0000;
@@ -239,10 +265,14 @@ li div[title="Smazat"]:hover {
   color: #ecf39e;
 }
 
+.button-container {
+  text-align: center;
+}
 
-#uloz_recept {
-  display: block;
-  margin: 20px auto;
+#uloz_recept, 
+#zobraz_ulozene {
+  display: inline-block; 
+  margin: 20px;
   padding: 15px 30px;
   background-color: #90a955;
   color: #132a13;
@@ -254,13 +284,31 @@ li div[title="Smazat"]:hover {
   text-align: center;
 }
 
-#uloz_recept:hover {
+#uloz_recept:hover, 
+#zobraz_ulozene:hover {
   background-color: #132a13;
   color: #ecf39e;
 }
 
 
+@media (max-width: 1200px) {
+  .pair {
+    flex: 1 1 50%;
+  }
+}
+
+
 @media (max-width: 768px) {
+  div[style="border: 1px solid black;"] {
+    max-width: 100%;
+    margin: 10px;
+  }
+
+  .pair {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
   #zalozeni_receptu,
   #formular > div div,
   li {
@@ -269,12 +317,16 @@ li div[title="Smazat"]:hover {
 
   #zalozeni_receptu input[type="text"],
   #zalozeni_receptu input[type="number"],
-  #zalozeni_receptu button,
-  #zalozeni_receptu #max_vel,
-  input[type="text"],
-  input[type="number"],
-  select,
+  #zalozeni_receptu select,
+  #zalozeni_receptu label,
+  .upload-button,
+  #max_vel,
   textarea {
     flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .nazev_receptu_input {
+    width: 100%;
   }
 }
