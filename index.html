@@ -123,9 +123,16 @@
 
     </form>
     
-    <script src="model.js"></script>
-    <script src="view.js"></script>
-    <script src="controller.js"></script>
-  
+    <script src="JS/Model.js"></script>
+    <script src="JS/View.js"></script>
+    <script src="JS/Controller.js"></script>
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const model = new Model();
+    const view = new View();
+    const controller = new Controller(model, view);
+  });
+    </script>
+
 </body>
 </html>
