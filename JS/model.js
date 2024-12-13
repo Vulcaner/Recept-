@@ -1,7 +1,6 @@
 class Model {
     constructor() {
         this.groups = [];
-        
         this.allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
         this.maxSize = 2 * 1024 * 1024;
     }
@@ -37,6 +36,12 @@ class Model {
     removeIngredient(groupIndex, ingredientIndex) {
         if(this.groups[groupIndex]) {
             this.groups[groupIndex].ingredients.splice(ingredientIndex, 1);
+        }
+    }
+
+    removeGroup(groupIndex) {
+        if(this.groups[groupIndex]) {
+            this.groups.splice(groupIndex, 1);
         }
     }
 }

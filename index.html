@@ -74,7 +74,13 @@
             <h2>Přidání ingrediencí</h2>
             <div id="ingredience-container">
                 <div class="skupina-ingredienci">
-                    <input type="text" name="skupina_ingredienci" placeholder="Skupina ingrediencí (hlavní jídlo, příloha, omáčka, ...)">
+                    <div class="group-header">
+                        <input type="text" name="skupina_ingredienci" placeholder="Skupina ingrediencí (hlavní jídlo, příloha, omáčka, ...)" value="">
+                        <div class="krizek-group">
+                            <img src="obrazky/kriz.png" alt="Smazat skupinu">
+                        </div>
+                    </div>
+                    
                     <div class="ingredient-line">
                         <input type="text" name="nazev_ingredience" placeholder="Název">
                         <input type="number" name="mnozstvi" placeholder="Množství" min="1">
@@ -94,13 +100,18 @@
                             <img src="obrazky/kriz.png" alt="Smazat">
                         </div>
                     </div>
+        
+                    <div class="div-pridani-group">
+                        <button class="pridej-ingredienci-group">Přidej ingredienci</button>
+                    </div>
                 </div>
             </div>
+        
             <div class="div-pridani">
-                <div id="pridej-ingredienci">Přidej ingredienci</div>
                 <div id="pridej-skupinu-ingredienci">Přidej skupinu ingrediencí</div>
             </div>       
         </div>
+        
         
         
 
@@ -112,9 +123,6 @@
                         <textarea id="postup_area" type ="text" name="postup" placeholder="Popis přípravy" required="required" rows="10" cols="100"></textarea>
                     </li>
                 </ul>
-                <div class="div-pridani">
-                    <div id="pridej-ingredienci">Přidat další krok postupu</div>
-                </div>
             </div>
         </div>
 

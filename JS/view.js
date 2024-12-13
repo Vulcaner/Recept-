@@ -1,16 +1,12 @@
 class View {
     constructor() {
-        // Obrázek
         this.previewBox = document.querySelector('.image-preview-placeholder');
         this.uploadInput = document.getElementById('upload_foto');
 
-        // Ingredience
         this.ingredienceContainer = document.getElementById('ingredience-container');
-        this.addIngredientBtn = document.getElementById('pridej-ingredienci');
         this.addGroupBtn = document.getElementById('pridej-skupinu-ingredienci');
     }
 
-    // ===== Obrázek (původní logika) =====
     bindFileUpload(handler) {
         this.uploadInput.addEventListener('change', () => {
             const file = this.uploadInput.files[0];
@@ -29,24 +25,11 @@ class View {
 
     showError(message) {
         alert(message);
-        this.uploadInput.value = ''; // reset výběru souboru
+        this.uploadInput.value = ''; 
     }
 
     resetPreview() {
         this.previewBox.innerHTML = 'Zatím není vložen žádný obrázek';
-    }
-
-    // ===== Ingredience (nová logika) =====
-    bindAddIngredient(handler) {
-        this.addIngredientBtn.addEventListener('click', () => {
-            const groups = this.getGroups();
-            if(groups.length > 0) {
-                const groupIndex = groups.length - 1; 
-                handler(groupIndex);
-            } else {
-                alert("Nejprve přidejte skupinu ingrediencí.");
-            }
-        });
     }
 
     bindAddGroup(handler) {
@@ -55,9 +38,20 @@ class View {
         });
     }
 
+    bindAddIngredient(handler) {
+        this.ingredienceContainer.addEventListener('click', (e) => {
+            if(e.target.classList.contains('pridej-ingredienci-group')) {
+                const groupEl = e.target.closest('.skupina-ingredienci');
+                const groups = Array.from(this.ingredienceContainer.querySelectorAll('.skupina-ingredienci'));
+                const groupIndex = groups.indexOf(groupEl);
+                handler(groupIndex);
+            }
+        });
+    }
+
     bindRemoveIngredient(handler) {
         this.ingredienceContainer.addEventListener('click', (e) => {
-            if(e.target.closest('.krizek')) {
+            if(e.target.closest('.krizek') && e.target.closest('.ingredient-line')) {
                 const line = e.target.closest('.ingredient-line');
                 const groupEl = e.target.closest('.skupina-ingredienci');
                 const groups = Array.from(this.ingredienceContainer.querySelectorAll('.skupina-ingredienci'));
@@ -65,6 +59,17 @@ class View {
                 const lines = Array.from(groupEl.querySelectorAll('.ingredient-line'));
                 const lineIndex = lines.indexOf(line);
                 handler(groupIndex, lineIndex);
+            }
+        });
+    }
+
+    bindRemoveGroup(handler) {
+        this.ingredienceContainer.addEventListener('click', (e) => {
+            if(e.target.closest('.krizek-group')) {
+                const groupEl = e.target.closest('.skupina-ingredienci');
+                const groups = Array.from(this.ingredienceContainer.querySelectorAll('.skupina-ingredienci'));
+                const groupIndex = groups.indexOf(groupEl);
+                handler(groupIndex);
             }
         });
     }
@@ -94,20 +99,32 @@ class View {
         return div;
     }
 
-    createGroupElement(groupName='') {
+    createGroupElement(groupName='', groupIndex=0) {
         const div = document.createElement('div');
         div.classList.add('skupina-ingredienci');
+
         div.innerHTML = `
-            <input type="text" name="skupina_ingredienci" placeholder="Skupina ingrediencí (hlavní jídlo, příloha, omáčka, ...)" value="${groupName}">
+            <div class="group-header">
+                <input type="text" name="skupina_ingredienci" placeholder="Skupina ingrediencí (hlavní jídlo, příloha, omáčka, ...)" value="${groupName}">
+                <div class="krizek-group">
+                    <img src="obrazky/kriz.png" alt="Smazat skupinu">
+                </div>
+            </div>
         `;
+
         return div;
     }
 
-    addGroupToDOM(groupName) {
-        const groupEl = this.createGroupElement(groupName);
-        // Přidáme defaultně jednu ingredienci
+    addGroupToDOM(groupName, groupIndex) {
+        const groupEl = this.createGroupElement(groupName, groupIndex);
         const ingredientLine = this.createIngredientLine();
         groupEl.appendChild(ingredientLine);
+
+        const addIngredientDiv = document.createElement('div');
+        addIngredientDiv.classList.add('div-pridani-group');
+        addIngredientDiv.innerHTML = `<button class="pridej-ingredienci-group">Přidej ingredienci</button>`;
+        groupEl.appendChild(addIngredientDiv);
+
         this.ingredienceContainer.appendChild(groupEl);
     }
 
@@ -115,7 +132,7 @@ class View {
         const groups = this.ingredienceContainer.querySelectorAll('.skupina-ingredienci');
         const groupEl = groups[groupIndex];
         const line = this.createIngredientLine(ingredient.name, ingredient.amount, ingredient.unit);
-        groupEl.appendChild(line);
+        groupEl.insertBefore(line, groupEl.querySelector('.div-pridani-group'));
     }
 
     getGroups() {
@@ -128,6 +145,13 @@ class View {
         const lines = groupEl.querySelectorAll('.ingredient-line');
         if(lines[lineIndex]) {
             lines[lineIndex].remove();
+        }
+    }
+
+    removeGroup(groupIndex) {
+        const groups = this.ingredienceContainer.querySelectorAll('.skupina-ingredienci');
+        if(groups[groupIndex]) {
+            groups[groupIndex].remove();
         }
     }
 }
