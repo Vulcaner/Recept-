@@ -9,7 +9,7 @@
 <body>
     <h1>Receptář</h1>
 
-    <form id="formular" action="/submit_form" method="post">
+    <form id="formular" action="#" method="post">
         
         <div style="border: 1px solid black;">
             <h2>Vložení nového receptu:</h2>
@@ -19,8 +19,8 @@
                 </div>
                 
                 <div id="zalozeni_receptu">
-                    <input class="nazev_receptu_input" type="text" name="nazev_receptu" placeholder="Název receptu">
-        
+                    <input class="nazev_receptu_input" type="text" name="nazev_receptu" placeholder="Název receptu" required>
+
                     <div class="pair">
                         <label for="doba_pripravy">Čas přípravy:</label>
                         <select id="doba_pripravy" name="doba_pripravy">
@@ -46,7 +46,7 @@
                             <option value="240">4 hodiny</option>
                         </select>
                     </div>
-        
+
                     <div class="pair">
                         <label for="denni_dobro">Denní zařazení:</label>
                         <select id="denni_dobro" name="denni_dobro">
@@ -56,7 +56,7 @@
                             <option value="vecere">Večeře</option>
                         </select>
                     </div>
-        
+
                     <div class="pair">
                         <label for="druh_kuchyne">Druh kuchyně:</label>
                         <select id="druh_kuchyne" name="druh_kuchyne">
@@ -66,12 +66,12 @@
                             <option value="francouzska">Francouzská</option>
                         </select>
                     </div>
-        
+
                     <div class="pair">
                         <label for="typ_jidla">Typ jídla:</label>
                         <select id="typ_jidla" name="typ_jidla">
                             <option value="polevka">Polévka</option>
-                            <option value="maso">Hlavní jídlo</option>
+                            <option value="maso">Maso</option>
                             <option value="omacka">Omáčka</option>
                             <option value="testoviny">Těstoviny</option>
                             <option value="moucnik">Moučníky</option>
@@ -92,7 +92,7 @@
                 <div class="skupina-ingredienci">
                     <div class="group-header">
                         <input type="text" name="skupina_ingredienci" placeholder="Skupina ingrediencí (hlavní jídlo, příloha, omáčka, ...)" value="">
-                        <div class="krizek-group">
+                        <div class="krizek-group" title="Smazat">
                             <img src="obrazky/kriz.png" alt="Smazat skupinu">
                         </div>
                     </div>
@@ -112,13 +112,13 @@
                             <option>špetka</option>
                             <option>stroužek</option>
                         </select>
-                        <div class="krizek">
+                        <div class="krizek" title="Smazat">
                             <img src="obrazky/kriz.png" alt="Smazat">
                         </div>
                     </div>
         
                     <div class="div-pridani-group">
-                        <button class="pridej-ingredienci-group">Přidej ingredienci</button>
+                        <button class="pridej-ingredienci-group" type="button">Přidej ingredienci</button>
                     </div>
                 </div>
             </div>
@@ -127,23 +127,20 @@
                 <button id="pridej-skupinu-ingredienci" type="button">Přidej skupinu ingrediencí</button>
             </div>       
         </div>
-        
-        
-        
-
+          
         <div style="border: 1px solid black;">
             <h2>Postup přípravy receptu</h2>
             <div>
                 <ul>
                     <li>
-                        <textarea id="postup_area" type ="text" name="postup" placeholder="Popis přípravy" required="required" rows="10" cols="100"></textarea>
+                        <textarea id="postup_area" type="text" name="postup" placeholder="Popis přípravy" required="required" rows="10" cols="100"></textarea>
                     </li>
                 </ul>
             </div>
         </div>
 
         <div class="button-container">
-            <input id="zobraz_ulozene" type="button" value="Zobrazit uložené recepty">
+            <a href="recepty.html"><input id="zobraz_ulozene" type="button" value="Zobrazit uložené recepty"></a>
             <input id="uloz_recept" type="submit" value="Uložit recept">
         </div>
 

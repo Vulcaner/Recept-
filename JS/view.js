@@ -6,7 +6,6 @@ class View {
         this.ingredienceContainer = document.getElementById('ingredience-container');
         this.addGroupBtn = document.getElementById('pridej-skupinu-ingredienci');
         this.form = document.getElementById('formular');
-        this.showRecipesBtn = document.getElementById('zobraz_ulozene');
         this.errorContainer = document.createElement('div');
         this.errorContainer.classList.add('error-message');
         this.form.insertBefore(this.errorContainer, this.form.firstChild);
@@ -163,10 +162,6 @@ class View {
 
     bindFormSubmit(handler) {
         this.form.addEventListener('submit', handler);
-    }
-
-    bindShowRecipes(handler) {
-        this.showRecipesBtn.addEventListener('click', handler);
     }
 
     showError(message) {

@@ -9,7 +9,6 @@ class Controller {
         this.view.bindRemoveIngredient(this.handleRemoveIngredient);
         this.view.bindRemoveGroup(this.handleRemoveGroup);
         this.view.bindFormSubmit(this.handleFormSubmit);
-        this.view.bindShowRecipes(this.handleShowRecipes);
     }
 
     handleFileUpload = (file) => {
