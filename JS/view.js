@@ -5,7 +5,13 @@ class View {
 
         this.ingredienceContainer = document.getElementById('ingredience-container');
         this.addGroupBtn = document.getElementById('pridej-skupinu-ingredienci');
+        this.form = document.getElementById('formular');
+        this.showRecipesBtn = document.getElementById('zobraz_ulozene');
+        this.errorContainer = document.createElement('div');
+        this.errorContainer.classList.add('error-message');
+        this.form.insertBefore(this.errorContainer, this.form.firstChild);
     }
+
 
     bindFileUpload(handler) {
         this.uploadInput.addEventListener('change', () => {
@@ -153,5 +159,28 @@ class View {
         if(groups[groupIndex]) {
             groups[groupIndex].remove();
         }
+    }
+
+    bindFormSubmit(handler) {
+        this.form.addEventListener('submit', handler);
+    }
+
+    bindShowRecipes(handler) {
+        this.showRecipesBtn.addEventListener('click', handler);
+    }
+
+    showError(message) {
+        this.errorContainer.textContent = message;
+        this.errorContainer.style.display = 'block';
+        this.form.querySelector('input[name="foto"]').value = '';
+        setTimeout(() => {
+            this.errorContainer.style.display = 'none';
+            this.errorContainer.textContent = '';
+        }, 5000);
+    }
+
+    resetForm() {
+        this.form.reset();
+        this.resetPreview();
     }
 }

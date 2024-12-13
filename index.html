@@ -71,7 +71,7 @@
                         <label for="typ_jidla">Typ jídla:</label>
                         <select id="typ_jidla" name="typ_jidla">
                             <option value="polevka">Polévka</option>
-                            <option value="maso">Maso</option>
+                            <option value="maso">Hlavní jídlo</option>
                             <option value="omacka">Omáčka</option>
                             <option value="testoviny">Těstoviny</option>
                             <option value="moucnik">Moučníky</option>
@@ -124,7 +124,7 @@
             </div>
         
             <div class="div-pridani">
-                <div id="pridej-skupinu-ingredienci">Přidej skupinu ingrediencí</div>
+                <button id="pridej-skupinu-ingredienci" type="button">Přidej skupinu ingrediencí</button>
             </div>       
         </div>
         
@@ -149,15 +149,16 @@
 
     </form>
     
+    <script src="JS/databaze.js"></script>
     <script src="JS/Model.js"></script>
     <script src="JS/View.js"></script>
     <script src="JS/Controller.js"></script>
     <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const model = new Model();
-    const view = new View();
-    const controller = new Controller(model, view);
-  });
+        document.addEventListener('DOMContentLoaded', () => {
+            const model = new Model();
+            const view = new View();
+            const controller = new Controller(model, view);
+        });
     </script>
 
 </body>
