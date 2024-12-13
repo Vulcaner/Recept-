@@ -1,5 +1,7 @@
 class Model {
     constructor() {
+        this.groups = [];
+        
         this.allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
         this.maxSize = 2 * 1024 * 1024;
     }
@@ -15,5 +17,26 @@ class Model {
             return { valid: false, error: 'Nepodporovaný formát. Vyberte prosím JPG, JPEG nebo PNG.' };
         }
         return { valid: true, error: null };
+    }
+
+    addGroup(groupName) {
+        const newGroup = {
+            name: groupName,
+            ingredients: []
+        };
+        this.groups.push(newGroup);
+        return this.groups.length - 1;
+    }
+
+    addIngredient(groupIndex, ingredient) {
+        if(this.groups[groupIndex]) {
+            this.groups[groupIndex].ingredients.push(ingredient);
+        }
+    }
+
+    removeIngredient(groupIndex, ingredientIndex) {
+        if(this.groups[groupIndex]) {
+            this.groups[groupIndex].ingredients.splice(ingredientIndex, 1);
+        }
     }
 }

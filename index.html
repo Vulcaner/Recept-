@@ -62,45 +62,47 @@
                             <option value="dezert">Dezerty</option>
                         </select>
                     </div>
-        
-                    <button class="upload-button" type="button" onclick="document.getElementById('upload_foto').click()">Nahrát fotografii</button>
+
+                    <button class="upload-button" type="button" onclick="document.getElementById('upload_foto').click()">Nahrát obrázek</button>
                     <input id="upload_foto" type="file" name="foto" accept=".jpg, .png, .jpeg" style="display: none;">
                     <p id="max_vel">Maximální velikost fotografie je 2MB a podporované formáty jsou JPG, JPEG nebo PNG.</p>
                 </div>
             </div>
         </div>
         
-        
-
         <div style="border: 1px solid black;">
             <h2>Přidání ingrediencí</h2>
-            <div class="skupina-ingredienci">
-                <input type="text" name="skupina_ingredienci" placeholder="Skupina ingrediencí (hlavní jídlo, příloha, omáčka, ...)">
-                <input type="text" name="nazev_ingredience" placeholder="Název">
-                <input type="number" name="mnozstvi" placeholder="Množství" min="1">
-                <select name="mnozstvi_id">
-                    <option>ks</option>
-                    <option>g</option>
-                    <option>kg</option>
-                    <option>ml</option>
-                    <option>l</option>
-                    <option>balení</option>
-                    <option>balíček</option>
-                    <option>hrnek</option>
-                    <option>špetka</option>
-                    <option>stroužek</option>
-                </select>
-                <div class="krizek">
-                    <img src="obrazky/kriz.png" alt="Smazat">
+            <div id="ingredience-container">
+                <div class="skupina-ingredienci">
+                    <input type="text" name="skupina_ingredienci" placeholder="Skupina ingrediencí (hlavní jídlo, příloha, omáčka, ...)">
+                    <div class="ingredient-line">
+                        <input type="text" name="nazev_ingredience" placeholder="Název">
+                        <input type="number" name="mnozstvi" placeholder="Množství" min="1">
+                        <select name="mnozstvi_id">
+                            <option>ks</option>
+                            <option>g</option>
+                            <option>kg</option>
+                            <option>ml</option>
+                            <option>l</option>
+                            <option>balení</option>
+                            <option>balíček</option>
+                            <option>hrnek</option>
+                            <option>špetka</option>
+                            <option>stroužek</option>
+                        </select>
+                        <div class="krizek">
+                            <img src="obrazky/kriz.png" alt="Smazat">
+                        </div>
+                    </div>
                 </div>
             </div>
-            
             <div class="div-pridani">
                 <div id="pridej-ingredienci">Přidej ingredienci</div>
                 <div id="pridej-skupinu-ingredienci">Přidej skupinu ingrediencí</div>
-            </div>
-              
+            </div>       
         </div>
+        
+        
 
         <div style="border: 1px solid black;">
             <h2>Postup přípravy receptu</h2>
