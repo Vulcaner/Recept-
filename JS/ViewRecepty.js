@@ -1,4 +1,3 @@
-// JS/ViewRecepty.js
 class ViewRecepty {
     constructor() {
         this.receptyContainer = document.getElementById('recepty-container');
@@ -18,7 +17,7 @@ class ViewRecepty {
 
             receptDiv.innerHTML = `
                 <h3>${recept.nazev}</h3>
-                <p><strong>Čas přípravy:</strong> ${recept.dobaPripravy} minut</p>
+                <p><strong>Čas přípravy:</strong> ${recept.dobaPripravy}</p>
                 <p><strong>Denní zařazení:</strong> ${this.capitalize(recept.denniDobro)}</p>
                 <p><strong>Druh kuchyně:</strong> ${this.capitalize(recept.druhKuchyne)}</p>
                 <p><strong>Typ jídla:</strong> ${this.capitalize(recept.typJidla)}</p>

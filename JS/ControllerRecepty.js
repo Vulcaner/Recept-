@@ -1,4 +1,3 @@
-// JS/ControllerRecepty.js
 class ControllerRecepty {
     constructor(model, view) {
         this.model = model;

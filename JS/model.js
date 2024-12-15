@@ -1,4 +1,3 @@
-// JS/Model.js
 class Model {
     constructor() {
         this.groups = [];
@@ -46,10 +45,28 @@ class Model {
         }
     }
 
-    // Metody pro recepty.html
+    clearGroups() {
+        this.groups = [];
+        console.log('All groups have been cleared');
+    }
+
     async getAllRecepty() {
         return await databaze.getAllRecepty();
     }
 
-    // Další metody pro budoucí rozšíření (getRecept, updateRecept, deleteRecept)
+    async getRecept(id) {
+        return await databaze.getRecept(id);
+    }
+
+    async updateRecept(id, data) {
+        return await databaze.updateRecept(id, data);
+    }
+
+    async deleteRecept(id) {
+        return await databaze.deleteRecept(id);
+    }
+
+    async addRecipe(recipe) {
+        return await databaze.addRecipe(recipe);
+    }
 }

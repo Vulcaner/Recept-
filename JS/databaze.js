@@ -1,10 +1,9 @@
-// JS/databaze.js
 class Database {
     constructor() {
         this.dbName = 'ReceptarDB';
-        this.dbVersion = 2; // Zvýšení verze na 2 pro spuštění onupgradeneeded
+        this.dbVersion = 2;
         this.db = null;
-        this.openPromise = this.open(); // Inicializace openPromise v konstruktoru
+        this.openPromise = this.open();
     }
 
     open() {
@@ -17,7 +16,6 @@ class Database {
                 if (!db.objectStoreNames.contains('recepty')) {
                     const objectStore = db.createObjectStore('recepty', { keyPath: 'id', autoIncrement: true });
                     objectStore.createIndex('nazev', 'nazev', { unique: false });
-                    // Přidání dalších indexů, pokud je potřeba
                     console.log('Object store "recepty" vytvořen.');
                 } else {
                     console.log('Object store "recepty" již existuje.');
@@ -38,48 +36,45 @@ class Database {
     }
 
     async addRecipe(recipe) {
-        await this.openPromise; // Čeká na otevření databáze
+        await this.openPromise;
+        console.log('Přidávání receptu do databáze:', recipe);
         return new Promise((resolve, reject) => {
             const transaction = this.db.transaction(['recepty'], 'readwrite');
             const objectStore = transaction.objectStore('recepty');
             const request = objectStore.add(recipe);
 
             request.onsuccess = () => {
-                console.log('Recept úspěšně přidán.');
+                console.log('Recept úspěšně přidán do databáze.');
                 resolve();
             };
 
             request.onerror = (event) => {
-                console.error('Chyba při ukládání receptu:', event.target.error);
+                console.error('Chyba při ukládání receptu do databáze:', event.target.error);
                 reject(event.target.error);
             };
         });
     }
 
     async getAllRecepty() {
-        await this.openPromise; // Čeká na otevření databáze
+        await this.openPromise;
+        console.log('Načítání všech receptů z databáze');
         return new Promise((resolve, reject) => {
             const transaction = this.db.transaction(['recepty'], 'readonly');
             const objectStore = transaction.objectStore('recepty');
             const request = objectStore.getAll();
 
             request.onsuccess = () => {
+                console.log('Recepty načteny z databáze:', request.result);
                 resolve(request.result);
             };
 
             request.onerror = () => {
+                console.error('Chyba při načítání receptů z databáze.');
                 reject('Chyba při načítání receptů.');
             };
         });
     }
 
-    // Další CRUD metody (getRecept, updateRecept, deleteRecept) mohou být přidány podobně
 }
 
 const databaze = new Database();
-// Není třeba volat open() explicitně, je již voláno v konstruktoru
-// databaze.open().then(() => {
-//     console.log('Databáze úspěšně otevřena');
-// }).catch((error) => {
-//     console.error('Chyba při otevírání databáze:', error);
-// });
