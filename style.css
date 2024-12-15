@@ -375,6 +375,26 @@ li div[title="Smazat"]:hover {
   color: #ecf39e;
 }
 
+.recept {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: #31572c;
+}
+
+.recept h3 {
+  margin-top: 0;
+}
+
+.recept img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+
 
 @media (max-width: 1200px) {
   .pair {
@@ -460,7 +480,7 @@ li div[title="Smazat"]:hover {
     width: 20px;
     height: 20px;
   }
-}
+
 
 .error-message {
     color: #ff0000;
@@ -471,3 +491,9 @@ li div[title="Smazat"]:hover {
     display: none;
     text-align: center;
 }
+
+.recept {
+  padding: 10px;
+}
+
+ }

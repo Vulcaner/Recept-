@@ -1,11 +1,32 @@
+<!-- recepty.html -->
 <!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Uložené Recepty</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptář - Uložené recepty</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <h1>Uložené recepty</h1>
+
+    <div id="recepty-container">
+        <!-- Dynamicky načtené recepty se zobrazí zde -->
+    </div>
+
+    <!-- Zahrnutí JavaScript souborů -->
+    <script src="JS/databaze.js"></script>
+    <script src="JS/model.js"></script>
+    <script src="JS/ViewRecepty.js"></script>
+    <script src="JS/ControllerRecepty.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const model = new Model();
+            const view = new ViewRecepty();
+            const controller = new ControllerRecepty(model, view);
+            controller.init();
+        });
+    </script>
+
 </body>
 </html>

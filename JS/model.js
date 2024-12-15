@@ -1,3 +1,4 @@
+// JS/Model.js
 class Model {
     constructor() {
         this.groups = [];
@@ -44,4 +45,11 @@ class Model {
             this.groups.splice(groupIndex, 1);
         }
     }
+
+    // Metody pro recepty.html
+    async getAllRecepty() {
+        return await databaze.getAllRecepty();
+    }
+
+    // Další metody pro budoucí rozšíření (getRecept, updateRecept, deleteRecept)
 }
