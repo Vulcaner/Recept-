@@ -65,14 +65,13 @@ class Controller {
         const form = event.target;
 
         const nazevReceptu = form.querySelector('input[name="nazev_receptu"]').value.trim();
-        const dobaPripravySelect = form.querySelector('select[name="doba_pripravy"]');
-        const denniDobroSelect = form.querySelector('select[name="denni_dobro"]');
-        const druhKuchyneSelect = form.querySelector('select[name="druh_kuchyne"]');
-        const typJidlaSelect = form.querySelector('select[name="typ_jidla"]');
+        const dobaPripravy = dobaPripravySelect.options[dobaPripravySelect.selectedIndex].text.trim();
+        const denniDobro = denniDobroSelect.options[denniDobroSelect.selectedIndex].text.trim();
+        const druhKuchyne = druhKuchyneSelect.options[druhKuchyneSelect.selectedIndex].text.trim();
+        const typJidla = typJidlaSelect.options[typJidlaSelect.selectedIndex].text.trim();
         const postup = form.querySelector('textarea[name="postup"]').value.trim();
         const fotoInput = form.querySelector('input[name="foto"]');
         const foto = fotoInput.files[0];
-
         const dobaPripravy = dobaPripravySelect.options[dobaPripravySelect.selectedIndex].text.trim();
         const denniDobro = denniDobroSelect.options[denniDobroSelect.selectedIndex].text.trim();
         const druhKuchyne = druhKuchyneSelect.options[druhKuchyneSelect.selectedIndex].text.trim();

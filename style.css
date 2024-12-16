@@ -394,6 +394,123 @@ li div[title="Smazat"]:hover {
   margin-top: 10px;
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #31572c;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  color: #ecf39e;
+  box-sizing: border-box;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.modal-content input[type="text"],
+.modal-content select,
+.modal-content textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ecf39e;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #ecf39e;
+  color: #132a13;
+}
+
+.modal-content textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-buttons {
+  text-align: right;
+}
+
+.form-buttons button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+#cancel-edit {
+  background-color: #ff4d4d;
+  color: #fff;
+}
+
+#cancel-edit:hover {
+  background-color: #ff0000;
+}
+
+.modal-content form button[type="submit"] {
+  background-color: #90a955;
+  color: #132a13;
+}
+
+.modal-content form button[type="submit"]:hover {
+  background-color: #132a13;
+  color: #ecf39e;
+}
+
+.button-container {
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.edit-button,
+.delete-button {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.edit-button {
+  background-color: #90a955;
+  color: #132a13;
+}
+
+.edit-button:hover {
+  background-color: #132a13;
+  color: #ecf39e;
+}
+
+.delete-button {
+  background-color: #ff4d4d;
+  color: #fff;
+}
+
+.delete-button:hover {
+  background-color: #ff0000;
+}
 
 
 @media (max-width: 1200px) {
@@ -496,4 +613,68 @@ li div[title="Smazat"]:hover {
   padding: 10px;
 }
 
- }
+.modal-content {
+  width: 95%; /* Zvětšení šířky na menších zařízeních */
+  padding: 15px;
+  font-size: 0.9em; /* Zmenšení fontu */
+}
+
+.modal-content h2 {
+  font-size: 1.3em;
+}
+
+.modal-content input[type="text"],
+.modal-content select,
+.modal-content textarea,
+.modal-content input[type="file"] {
+  font-size: 0.9em;
+  padding: 8px;
+}
+
+.modal-content textarea {
+  min-height: 80px; /* Menší výška textového pole */
+}
+
+.form-buttons button {
+  padding: 8px 12px;
+  font-size: 0.9em;
+}
+
+.modal-content img {
+  max-width: 90%; /* Menší náhled obrázku na mobilu */
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+      width: 100%;
+      padding: 10px;
+      font-size: 0.85em;
+  }
+
+  .modal-content h2 {
+      font-size: 1.2em;
+  }
+
+  .modal-content input[type="text"],
+  .modal-content select,
+  .modal-content textarea,
+  .modal-content input[type="file"] {
+      font-size: 0.85em;
+      padding: 6px;
+  }
+
+  .modal-content textarea {
+      min-height: 60px;
+  }
+
+  .form-buttons button {
+      padding: 6px 10px;
+      font-size: 0.85em;
+  }
+}
+
+
+
+}
+

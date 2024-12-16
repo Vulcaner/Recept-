@@ -1,3 +1,5 @@
+// JS/databaze.js
+
 class Database {
     constructor() {
         this.dbName = 'ReceptarDB';
@@ -75,6 +77,87 @@ class Database {
         });
     }
 
+    // Metoda pro získání jednoho receptu podle ID
+    async getRecept(id) {
+        await this.openPromise;
+        return new Promise((resolve, reject) => {
+            const transaction = this.db.transaction(['recepty'], 'readonly');
+            const objectStore = transaction.objectStore('recepty');
+            const request = objectStore.get(id);
+
+            request.onsuccess = () => {
+                const result = request.result;
+                if (result) {
+                    console.log('Recept načten z databáze:', result);
+                    resolve(result);
+                } else {
+                    console.error(`Recept s ID ${id} nebyl nalezen.`);
+                    reject(`Recept s ID ${id} nebyl nalezen.`);
+                }
+            };
+
+            request.onerror = () => {
+                console.error('Chyba při načítání receptu z databáze.');
+                reject('Chyba při načítání receptu.');
+            };
+        });
+    }
+
+    // Metoda pro aktualizaci receptu
+    async updateRecept(id, updatedRecipe) {
+        await this.openPromise;
+        return new Promise((resolve, reject) => {
+            const transaction = this.db.transaction(['recepty'], 'readwrite');
+            const objectStore = transaction.objectStore('recepty');
+            const getRequest = objectStore.get(id);
+
+            getRequest.onsuccess = () => {
+                const data = getRequest.result;
+                if (!data) {
+                    reject('Recept nenalezen.');
+                    return;
+                }
+
+                const updatedData = { ...data, ...updatedRecipe };
+                const updateRequest = objectStore.put(updatedData);
+
+                updateRequest.onsuccess = () => {
+                    console.log(`Recept s ID ${id} úspěšně aktualizován.`);
+                    resolve();
+                };
+
+                updateRequest.onerror = (event) => {
+                    console.error('Chyba při aktualizaci receptu:', event.target.error);
+                    reject(event.target.error);
+                };
+            };
+
+            getRequest.onerror = (event) => {
+                console.error('Chyba při získávání receptu pro aktualizaci:', event.target.error);
+                reject(event.target.error);
+            };
+        });
+    }
+
+    // Metoda pro mazání receptu
+    async deleteRecept(id) {
+        await this.openPromise;
+        return new Promise((resolve, reject) => {
+            const transaction = this.db.transaction(['recepty'], 'readwrite');
+            const objectStore = transaction.objectStore('recepty');
+            const request = objectStore.delete(id);
+
+            request.onsuccess = () => {
+                console.log(`Recept s ID ${id} úspěšně smazán.`);
+                resolve();
+            };
+
+            request.onerror = (event) => {
+                console.error('Chyba při mazání receptu:', event.target.error);
+                reject(event.target.error);
+            };
+        });
+    }
 }
 
 const databaze = new Database();
