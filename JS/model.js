@@ -1,5 +1,3 @@
-// JS/model.js
-
 class Model {
     constructor() {
         this.groups = [];

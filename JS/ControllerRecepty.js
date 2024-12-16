@@ -1,11 +1,8 @@
-// JS/ControllerRecepty.js
-
 class ControllerRecepty {
     constructor(model, view) {
         this.model = model;
         this.view = view;
 
-        // Bindování metod
         this.handleDelete = this.handleDelete.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.handleSaveEdit = this.handleSaveEdit.bind(this);
@@ -75,10 +72,8 @@ class ControllerRecepty {
         }
     }
 
-// JS/ControllerRecepty.js
 
 showEditForm(recept) {
-    // Vytvoření modálního okna pro editaci
     const modal = document.createElement('div');
     modal.classList.add('modal');
     modal.innerHTML = `
@@ -170,7 +165,6 @@ showEditForm(recept) {
 
     document.body.appendChild(modal);
 
-    // Zpracování nahrání nového obrázku
     const fileInput = modal.querySelector('#noveFoto');
     const previewImg = modal.querySelector('#previewFoto');
 
@@ -185,12 +179,10 @@ showEditForm(recept) {
         }
     });
 
-    // Zrušení editace
     modal.querySelector('#cancel-edit').addEventListener('click', () => {
         document.body.removeChild(modal);
     });
 
-    // Uložení editovaných dat
     modal.querySelector('#edit-form').addEventListener('submit', (e) => {
         e.preventDefault();
         this.handleSaveEdit(e, recept.id, modal);
@@ -215,7 +207,7 @@ async handleSaveEdit(event, id, modal) {
         const file = fileInput.files[0];
         const reader = new FileReader();
         reader.onload = async () => {
-            foto = reader.result; // Base64 URL obrázku
+            foto = reader.result;
             const updatedRecipe = {
                 nazev: form.nazev.value.trim(),
                 dobaPripravy: form.dobaPripravy.options[form.dobaPripravy.selectedIndex].text.trim(),

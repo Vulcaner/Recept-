@@ -1,5 +1,3 @@
-// JS/databaze.js
-
 class Database {
     constructor() {
         this.dbName = 'ReceptarDB';
@@ -77,7 +75,6 @@ class Database {
         });
     }
 
-    // Metoda pro získání jednoho receptu podle ID
     async getRecept(id) {
         await this.openPromise;
         return new Promise((resolve, reject) => {
@@ -103,7 +100,6 @@ class Database {
         });
     }
 
-    // Metoda pro aktualizaci receptu
     async updateRecept(id, updatedRecipe) {
         await this.openPromise;
         return new Promise((resolve, reject) => {
@@ -139,7 +135,6 @@ class Database {
         });
     }
 
-    // Metoda pro mazání receptu
     async deleteRecept(id) {
         await this.openPromise;
         return new Promise((resolve, reject) => {

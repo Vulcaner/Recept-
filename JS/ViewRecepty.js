@@ -1,5 +1,3 @@
-// JS/ViewRecepty.js
-
 class ViewRecepty {
     constructor() {
         this.receptyContainer = document.getElementById('recepty-container');
@@ -16,7 +14,7 @@ class ViewRecepty {
         recepty.forEach(recept => {
             const receptDiv = document.createElement('div');
             receptDiv.classList.add('recept');
-            receptDiv.setAttribute('data-id', recept.id); // Přidání datového atributu pro identifikaci
+            receptDiv.setAttribute('data-id', recept.id);
 
             receptDiv.innerHTML = `
                 <h3>${recept.nazev}</h3>
@@ -51,7 +49,6 @@ class ViewRecepty {
         alert(message);
     }
 
-    // Přidání metody pro získání ID receptu z DOM elementu
     getReceptId(element) {
         const receptDiv = element.closest('.recept');
         return receptDiv ? parseInt(receptDiv.getAttribute('data-id')) : null;
