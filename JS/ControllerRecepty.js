@@ -98,7 +98,16 @@ showEditForm(recept) {
                         <option value="60" ${recept.dobaPripravy === "60" ? "selected" : ""}>1 hodina</option>
                         <option value="75" ${recept.dobaPripravy === "75" ? "selected" : ""}>1 hodina 15 minut</option>
                         <option value="90" ${recept.dobaPripravy === "90" ? "selected" : ""}>1 hodina 30 minut</option>
+                        <option value="105" ${recept.dobaPripravy === "105" ? "selected" : ""}>1 hodina 45 minut</option>
                         <option value="120" ${recept.dobaPripravy === "120" ? "selected" : ""}>2 hodiny</option>
+                        <option value="135" ${recept.dobaPripravy === "135" ? "selected" : ""}>2 hodiny 15 minut</option>
+                        <option value="150" ${recept.dobaPripravy === "150" ? "selected" : ""}>2 hodiny 30 minut</option>
+                        <option value="165" ${recept.dobaPripravy === "165" ? "selected" : ""}>2 hodiny 45 minut</option>
+                        <option value="180" ${recept.dobaPripravy === "180" ? "selected" : ""}>3 hodiny</option>
+                        <option value="195" ${recept.dobaPripravy === "195" ? "selected" : ""}>3 hodiny 15 minut</option>
+                        <option value="210" ${recept.dobaPripravy === "210" ? "selected" : ""}>3 hodiny 30 minut</option>
+                        <option value="225" ${recept.dobaPripravy === "225" ? "selected" : ""}>3 hodiny 45 minut</option>
+                        <option value="240" ${recept.dobaPripravy === "240" ? "selected" : ""}>4 hodiny</option>
                     </select>
                 </div>
 
@@ -216,9 +225,9 @@ async handleSaveEdit(event, id, modal) {
                 typJidla: form.typJidla.options[form.typJidla.selectedIndex].text.trim(),
                 ingredience: JSON.parse(form.ingredience.value.trim()),
                 postup: form.postup.value.trim(),
-                foto: form.foto.value.trim() || null
+                foto: foto
             };
-
+    
             try {
                 await this.model.updateRecept(id, updatedRecipe);
                 document.body.removeChild(modal);
@@ -229,7 +238,8 @@ async handleSaveEdit(event, id, modal) {
             }
         };
         reader.readAsDataURL(file);
-    } else {
+    }
+     else {
         const updatedRecipe = {
             nazev: form.nazev.value.trim(),
             dobaPripravy: form.dobaPripravy.options[form.dobaPripravy.selectedIndex].text.trim(),

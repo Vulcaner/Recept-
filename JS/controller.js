@@ -138,13 +138,25 @@ class Controller {
             const reader = new FileReader();
             reader.onload = () => {
                 recipe.foto = reader.result;
-                console.log('Recipe with photo:', recipe);
+                console.log('Recipe with new photo:', recipe);
                 this.saveRecipe(recipe);
             };
             reader.readAsDataURL(foto);
         } else {
-            console.log('Recipe without photo:', recipe);
-            this.saveRecipe(recipe);
+            if (recipe.id) {
+                this.model.getRecept(recipe.id).then((existingRecipe) => {
+                    recipe.foto = existingRecipe.foto || null;
+                    console.log('Recipe with existing photo:', recipe);
+                    this.saveRecipe(recipe);
+                }).catch((error) => {
+                    console.error('Error fetching existing recipe for photo:', error);
+                    recipe.foto = null;
+                    this.saveRecipe(recipe);
+                });
+            } else {
+                console.log('Recipe without photo:', recipe);
+                this.saveRecipe(recipe);
+            }
         }
     };
     
