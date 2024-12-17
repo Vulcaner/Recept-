@@ -35,7 +35,7 @@ class ControllerRecepty {
 
     async handleDelete(event) {
         const id = this.view.getReceptId(event.target);
-        console.log('Mazání receptu s ID:', id);
+        console.log('ID receptu pro mazání:', id);
     
         if (id === null || isNaN(id)) {
             this.view.showError('ID receptu nebylo nalezeno.');
